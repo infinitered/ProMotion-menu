@@ -12,8 +12,8 @@ module ProMotionSlideMenu
 
     def self.new(menu, content, options={})
       screen = super options
-      screen.menu_controller = menu
-      screen.content_controller = content
+      screen.menu_controller = menu unless menu.nil?
+      screen.content_controller = content unless content.nil?
       screen
     end
 

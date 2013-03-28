@@ -7,7 +7,7 @@ describe ProMotionSlideMenu::SlideMenuScreen do
   end
 
   it "should return an instance of SlideMenuScreen" do
-    screen = ProMotionSlideMenu::SlideMenuScreen.new
+    screen = ProMotionSlideMenu::SlideMenuScreen.new nil, nil
     screen.should.be.instance_of ProMotionSlideMenu::SlideMenuScreen
   end
 
@@ -20,19 +20,19 @@ describe ProMotionSlideMenu::SlideMenuScreen do
   it "should present the menu controller when requested" do
     screen = ProMotionSlideMenu::SlideMenuScreen.new @menu, @content
     screen.show_menu
-    screen.focusedController.should == @menu
+    wait(0.5) { screen.reveal_controller.focusedController.should == @menu }
   end
 
   it "should present the content controller when requested" do
     screen = ProMotionSlideMenu::SlideMenuScreen.new @menu, @content
     screen.hide_menu
-    screen.focusedController.should == @content
+    wait(0.5) { screen.reveal_controller.focusedController.should == @content }
   end
 
   it "should let me wrap the content controller in a UINavigationController" do
     content_controller = BlankScreen.new(nav_bar: true)
     screen = ProMotionSlideMenu::SlideMenuScreen.new @menu, content_controller
-    screen.content_controller.main_controller.should.be.instance_of ProMotion::NavigationScreen
+    screen.content_controller.main_controller.should.be.instance_of ProMotion::NavigationController
   end
 
   it "should let me set the title on the content controller during creation" do
