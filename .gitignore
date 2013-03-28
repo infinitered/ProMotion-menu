@@ -1,0 +1,6 @@
+pkg/
+*.gem
+.DS_Store
+/build/
+.repl_history
+vendor/Pods/
