@@ -5,8 +5,10 @@ end
 Motion::Project::App.setup do |app|
 
   # Add all the files in our lib folder
+  # WE ADD THESE AT THE END OF THE FILE LISTING!
+  # This way, we can be sure that ProMotion itself has been compiled, but before any of the app's files are compiled.
   Dir.glob(File.join(File.dirname(__FILE__), 'pro_motion_slide_menu/**/*.rb')).each do |file|
-    app.files.unshift(file)
+    app.files << file 
   end
 
   # We have a cocoapod that we rely on
