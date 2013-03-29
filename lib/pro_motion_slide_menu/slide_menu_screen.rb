@@ -29,7 +29,9 @@ module ProMotionSlideMenu
     end
 
     def menu_controller=(c)
-      self.setLeftViewController prepare_controller_for_pm(c).main_controller, focusAfterChange: true, completion: default_completion_block
+      controller = prepare_controller_for_pm(c)
+      controller = controller.main_controller if controller.respond_to?(:main_controller)
+      self.setLeftViewController controller, focusAfterChange: true, completion: default_completion_block
     end
 
     def menu_controller
@@ -37,7 +39,9 @@ module ProMotionSlideMenu
     end
 
     def content_controller=(c)
-      self.setFrontViewController prepare_controller_for_pm(c).main_controller, focusAfterChange: true, completion: default_completion_block
+      controller = prepare_controller_for_pm(c)
+      controller = controller.main_controller if controller.respond_to?(:main_controller)
+      self.setFrontViewController controller, focusAfterChange: true, completion: default_completion_block
     end
 
     def content_controller

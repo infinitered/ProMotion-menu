@@ -47,4 +47,10 @@ describe ProMotionSlideMenu::SlideMenuScreen do
     screen.content_controller.title.should == 'My Title'
   end
 
+  it "should accept a plain UIViewController" do
+    screen = ProMotionSlideMenu::SlideMenuScreen.new nil, nil
+    should.not.raise(NoMethodError) { screen.menu_controller = UIViewController }
+    screen.menu_controller.should.be.instance_of UIViewController
+  end
+
 end

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    pro_motion_slide_menu (0.0.1)
+    pro_motion_slide_menu (0.0.2)
       ProMotion (~> 0.5)
       bubble-wrap
       motion-cocoapods
