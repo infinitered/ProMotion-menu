@@ -1,5 +1,5 @@
 # ProMotion SlideMenu
-This gem provides an easier way to integrate a great open source toolkit, [RubyMotion](http://www.rubymotion.com), with another great Objective-C framework, [PKRevealController](https://github.com/pkluz/PKRevealController), allowing you to easily have a cool facebook or Path style slide navigation menu from the left or right, complete with gestures.
+This gem provides an easier way to integrate a great open source toolkit, [RubyMotion](http://www.rubymotion.com), with another great Objective-C framework, [PKRevealController](https://github.com/pkluz/PKRevealController), allowing you to easily have a cool facebook or Path style slide navigation menu, complete with gestures.
 
 ## Installation
 
@@ -16,6 +16,9 @@ Install with bundler:
 ```ruby
 bundle install
 ```
+
+### Dependenices
+This depends on motion-cocoapods, BubbleWrap and ProMotion.
 
 ### Rakefile
 
@@ -42,8 +45,10 @@ class AppDelegate < ProMotion::AppDelegateParent
     slide_menu.menu_controller.class.name
     # => NavigationScreen
 
-    # Since you can get to the menu, you can also get to the underlying PKRevealController to make customizations there if needed
-    slide_menu.reveal_controller
+    # SlideMenuScreen is just an enhanced subclass of PKRevealController, so you can do all sorts of things with it
+    slide_menu.disablesFrontViewInteraction = true
+    slide_menu.animationDuration = 0.5
+    ...
 
   end
 
@@ -58,8 +63,14 @@ To make the slide menu present the menu from anywhere in your app:
 # Show the menu
 App.delegate.slide_menu.show_menu
 
+# Equivalent to
+App.delegate.slide_menu.showViewController App.delegate.slide_menu.menu_controller, animated: true, completion: ->(c) { true }
+
 # Hide the menu
 App.delegate.slide_menu.hide_menu
+
+# Equivalent to
+App.delegate.slide_menu.showViewController App.delegate.slide_menu.content_controller, animated: true, completion: ->(c) { true }
 
 ```
 
@@ -81,7 +92,7 @@ class NavigationScreen < ProMotion::TableScreen
   end
 
   def swap_content_controller(screen_class)
-    App.delegate.swipe_menu.content_controller = screen_class
+    App.delegate.slide_menu.content_controller = screen_class
   end
 
 end
@@ -91,7 +102,7 @@ end
 By default, `PKRevealController` supports showing the slide menu via a gesture recognizer.  To disable this feature, look at the documentation or use the following:
 
 ```ruby
-App.delegate.swipe_menu.reveal_controller.recognizesPanningOnFrontView = false
+App.delegate.slide_menu.recognizesPanningOnFrontView = false
 ```
 
 ## Creating a UIBarButtonItem to show the menu

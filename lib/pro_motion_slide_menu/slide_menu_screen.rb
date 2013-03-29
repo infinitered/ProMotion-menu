@@ -1,5 +1,7 @@
 module ProMotionSlideMenu
-  class SlideMenuScreen < ProMotion::Screen
+  class SlideMenuScreen < PKRevealController
+
+    include ::ProMotion::ScreenModule
 
     #
     # SlideMenuScreen
@@ -11,45 +13,42 @@ module ProMotionSlideMenu
     #
 
     def self.new(menu, content, options={})
-      screen = super options
+      screen = self.revealControllerWithFrontViewController(nil, leftViewController: nil, options: nil)
+      screen.on_create(options) if screen.respond_to?(:on_create)
       screen.menu_controller = menu unless menu.nil?
       screen.content_controller = content unless content.nil?
       screen
     end
 
     def show_menu
-      reveal_controller.showViewController menu_controller, animated: true, completion: default_completion_block
+      self.showViewController menu_controller, animated: true, completion: default_completion_block
     end
 
     def hide_menu
-      reveal_controller.showViewController content_controller, animated: true, completion: default_completion_block
-    end
-
-    def reveal_controller
-      @reveal_controller ||= PKRevealController.revealControllerWithFrontViewController(nil, leftViewController: nil, options: nil)
+      self.showViewController content_controller, animated: true, completion: default_completion_block
     end
 
     def menu_controller=(c)
-      reveal_controller.setLeftViewController prepare_controller_for_pm(c), focusAfterChange: true, completion: default_completion_block
+      self.setLeftViewController prepare_controller_for_pm(c).main_controller, focusAfterChange: true, completion: default_completion_block
     end
 
     def menu_controller
-      reveal_controller.leftViewController
+      self.leftViewController
     end
 
     def content_controller=(c)
-      reveal_controller.setFrontViewController prepare_controller_for_pm(c), focusAfterChange: true, completion: default_completion_block
+      self.setFrontViewController prepare_controller_for_pm(c).main_controller, focusAfterChange: true, completion: default_completion_block
     end
 
     def content_controller
-      reveal_controller.frontViewController
+      self.frontViewController
     end
 
 
     protected
 
     def prepare_controller_for_pm(controller)
-      setup_screen_for_open(controller, {})
+      controller = setup_screen_for_open(controller, {})
       ensure_wrapper_controller_in_place(controller, {})
       controller
     end

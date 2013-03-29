@@ -17,22 +17,28 @@ describe ProMotionSlideMenu::SlideMenuScreen do
     screen.content_controller.should == @content
   end
 
+  it "should allow you to pass class instances" do
+    screen = ProMotionSlideMenu::SlideMenuScreen.new LeftNavScreen, BlankScreen
+    screen.menu_controller.should.be.instance_of LeftNavScreen
+    screen.content_controller.should.be.instance_of BlankScreen
+  end
+
   it "should present the menu controller when requested" do
     screen = ProMotionSlideMenu::SlideMenuScreen.new @menu, @content
     screen.show_menu
-    wait(0.5) { screen.reveal_controller.focusedController.should == @menu }
+    wait(0.5) { screen.focusedController.should == @menu }
   end
 
   it "should present the content controller when requested" do
     screen = ProMotionSlideMenu::SlideMenuScreen.new @menu, @content
     screen.hide_menu
-    wait(0.5) { screen.reveal_controller.focusedController.should == @content }
+    wait(0.5) { screen.focusedController.should == @content }
   end
 
   it "should let me wrap the content controller in a UINavigationController" do
     content_controller = BlankScreen.new(nav_bar: true)
     screen = ProMotionSlideMenu::SlideMenuScreen.new @menu, content_controller
-    screen.content_controller.main_controller.should.be.instance_of ProMotion::NavigationController
+    screen.content_controller.should.be.instance_of ProMotion::NavigationController
   end
 
   it "should let me set the title on the content controller during creation" do
