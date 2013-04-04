@@ -1,6 +1,8 @@
 # ProMotion SlideMenu
 This gem provides an easier way to integrate a great open source toolkit, [RubyMotion](http://www.rubymotion.com), with another great Objective-C framework, [PKRevealController](https://github.com/pkluz/PKRevealController), allowing you to easily have a cool facebook or Path style slide navigation menu, complete with gestures.
 
+![Travis CI](https://secure.travis-ci.org/macfanatic/promotion_slide_menu.png?branch=master)
+
 ## Installation
 
 ### Bundler
