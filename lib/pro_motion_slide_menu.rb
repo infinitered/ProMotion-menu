@@ -1,3 +1,7 @@
+require 'motion-cocoapods'
+require 'bubble-wrap'
+require 'ProMotion'
+
 unless defined?(Motion::Project::Config)
   raise "This file must be required within a RubyMotion project Rakefile."
 end
