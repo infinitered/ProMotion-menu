@@ -2,7 +2,7 @@ require File.expand_path('../lib/pro_motion_slide_menu/version.rb', __FILE__)
 
 Gem::Specification.new do |s|
   s.name          = 'pro_motion_slide_menu'
-  s.version       = ProMotionSlideMenu::Version
+  s.version       = ProMotionSlideMenu::VERSION
   s.authors       = ["Matt Brewer"]
   s.email         = 'matt.brewer@me.com'
 
