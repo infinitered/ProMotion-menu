@@ -52,7 +52,7 @@ module ProMotionSlideMenu
     protected
 
     def prepare_controller_for_pm(controller)
-      controller = setup_screen_for_open(controller, {})
+      controller = set_up_screen_for_open(controller, {})
       ensure_wrapper_controller_in_place(controller, {})
       controller
     end

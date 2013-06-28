@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "bubble-wrap"
   s.add_dependency "motion-cocoapods"
-  s.add_dependency "ProMotion", '~> 0.5'
+  s.add_dependency "ProMotion", '~> 0.7.6'
   s.add_development_dependency "motion-stump"
 
 end

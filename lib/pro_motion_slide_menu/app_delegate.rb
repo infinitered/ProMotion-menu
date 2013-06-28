@@ -11,11 +11,11 @@ module ProMotionSlideMenu
 
     def open_slide_menu(menu, content, options={})
       self.slide_menu = SlideMenuScreen.new(menu, content, options)
-      load_root_screen slide_menu
+      open_root_screen slide_menu
       slide_menu
     end
 
   end
 end
 
-ProMotion::AppDelegateParent.send :include, ProMotionSlideMenu::AppDelegate
+PM::Delegate.send :include, ProMotionSlideMenu::AppDelegate
