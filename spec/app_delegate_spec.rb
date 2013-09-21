@@ -17,8 +17,8 @@ describe ProMotionSlideMenu::AppDelegate do
   end
 
   it "#open_slide_menu should return a SlideMenuScreen" do
-    @delegate.open_slide_menu(nil, nil).should.be.instance_of ProMotionSlideMenu::SlideMenuScreen
-  end 
+    @delegate.open_slide_menu(nil, left: nil).should.be.instance_of ProMotionSlideMenu::SlideMenuScreen
+  end
 
   it "should have a SlideMenuScreen as the rootViewController" do
     @delegate.window.rootViewController.should.be.instance_of ProMotionSlideMenu::SlideMenuScreen

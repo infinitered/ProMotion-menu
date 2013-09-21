@@ -1,5 +1,5 @@
 # ProMotion SlideMenu
-This gem provides an easier way to integrate a great open source toolkit, [RubyMotion](http://www.rubymotion.com), with another great Objective-C framework, [PKRevealController](https://github.com/pkluz/PKRevealController), allowing you to easily have a cool facebook or Path style slide navigation menu, complete with gestures.
+This gem provides an easier way to integrate a great open source toolkit, [RubyMotion](http://www.rubymotion.com), with another great Objective-C framework, [PKRevealController](https://github.com/pkluz/PKRevealController), allowing you to easily have a cool Facebook or Path style slide navigation menu, complete with gestures.
 
 ![Travis CI](https://secure.travis-ci.org/macfanatic/promotion_slide_menu.png?branch=master)
 
@@ -37,14 +37,14 @@ To create a slide menu in your application, you need to start in your AppDelegat
 
 ```ruby
 class AppDelegate < ProMotion::AppDelegateParent
-  
+
   def on_load(app, options)
 
-    # Open the slide menu with your navigation view (initially hidden) and a content view (initially shown)
-    open_slide_menu NavigationScreen, MyGreatAppScreen.new(nav_bar: true)
+    # Open the slide menu with your content view (initially shown) and navigation view(s) (initially hidden)
+    open_slide_menu MyGreatAppScreen.new(nav_bar: true), left: NavigationScreen
 
     # You can get to the instance of the slide menu at any time if you need to
-    slide_menu.menu_controller.class.name
+    slide_menu.controller(:left).class.name
     # => NavigationScreen
 
     # SlideMenuScreen is just an enhanced subclass of PKRevealController, so you can do all sorts of things with it
@@ -63,13 +63,13 @@ To make the slide menu present the menu from anywhere in your app:
 ```ruby
 
 # Show the menu
-App.delegate.slide_menu.show_menu
+App.delegate.slide_menu.show(:left)
 
 # Equivalent to
-App.delegate.slide_menu.showViewController App.delegate.slide_menu.menu_controller, animated: true, completion: ->(c) { true }
+App.delegate.slide_menu.showViewController App.delegate.slide_menu.left_controller, animated: true, completion: ->(c) { true }
 
 # Hide the menu
-App.delegate.slide_menu.hide_menu
+App.delegate.slide_menu.hide
 
 # Equivalent to
 App.delegate.slide_menu.showViewController App.delegate.slide_menu.content_controller, animated: true, completion: ->(c) { true }
@@ -94,7 +94,7 @@ class NavigationScreen < ProMotion::TableScreen
   end
 
   def swap_content_controller(screen_class)
-    App.delegate.slide_menu.content_controller = screen_class
+    App.delegate.slide_menu.controller(content: screen_class)
   end
 
 end
@@ -123,14 +123,14 @@ class MyScreen < ProMotion::Screen
 
      # Create a Bar button item containing that button
      # When tapping the button, show the menu (uses Sugarcube syntax)
-    @left_item = UIBarButtonItem.alloc.initWithCustomView(swipe_btn)    
+    @left_item = UIBarButtonItem.alloc.initWithCustomView(swipe_btn)
     swipe_btn.on(:touch.uicontrolevent) do
-      App.delegate.slide_menu.show_menu
+      App.delegate.slide_menu.show(:left)
     end
 
     # Assign the button item to the navigation item for it to appear in the top left
     self.navigationItem.leftBarButtonItem = @left_item
-    
+
   end
 end
 ```
