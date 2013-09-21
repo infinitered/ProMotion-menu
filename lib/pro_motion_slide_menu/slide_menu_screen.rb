@@ -3,18 +3,21 @@ module ProMotionSlideMenu
 
     include ::ProMotion::ScreenModule
 
+    attr_accessor :side
+
     #
     # SlideMenuScreen
     #
     # This is added as the root view controller when using the `open_slide_menu` method in your application delegate.
-    # 
-    # Several properties are defined to get the underlying PKRevealController instance for additional configuration, the 
+    #
+    # Several properties are defined to get the underlying PKRevealController instance for additional configuration, the
     # screen shown as the hidden menu, and the screen shown as the content controller.
     #
 
-    def self.new(menu, content, options={})
+    def self.new(side, menu, content, options={})
       screen = self.revealControllerWithFrontViewController(nil, leftViewController: nil, options: nil)
       screen.on_create(options) if screen.respond_to?(:on_create)
+      screen.side = side
       screen.menu_controller = menu unless menu.nil?
       screen.content_controller = content unless content.nil?
       screen
@@ -31,11 +34,19 @@ module ProMotionSlideMenu
     def menu_controller=(c)
       controller = prepare_controller_for_pm(c)
       controller = controller.navigationController || controller
-      self.setLeftViewController controller, focusAfterChange: true, completion: default_completion_block
+      if self.side == :left
+        self.setLeftViewController controller, focusAfterChange: true, completion: default_completion_block
+      elsif self.side == :right
+        self.setRightViewController controller, focusAfterChange: true, completion: default_completion_block
+      end
     end
 
     def menu_controller
-      self.leftViewController
+      if self.side == :left
+        self.leftViewController
+      elsif self.side == :right
+        self.rightViewController
+      end
     end
 
     def content_controller=(c)

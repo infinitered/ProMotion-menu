@@ -9,8 +9,8 @@ module ProMotionSlideMenu
       !slide_menu.nil?
     end
 
-    def open_slide_menu(menu, content, options={})
-      self.slide_menu = SlideMenuScreen.new(menu, content, options)
+    def open_slide_menu(side, menu, content, options={})
+      self.slide_menu = SlideMenuScreen.new(side, menu, content, options)
       open_root_screen slide_menu
       slide_menu
     end
