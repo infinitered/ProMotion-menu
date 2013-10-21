@@ -104,7 +104,11 @@ end
 By default, `PKRevealController` supports showing the slide menu via a gesture recognizer.  To disable this feature, look at the documentation or use the following:
 
 ```ruby
-App.delegate.slide_menu.recognizesPanningOnFrontView = false
+# Disable the gesture recongizer
+App.delegate.slide_menu.removePanGestureRecognizerFromFrontView
+
+# Re-enable the gesture recognizer (enabled by default)
+App.delegate.slide_menu.addPanGestureRecognizerToFrontView
 ```
 
 ## Creating a UIBarButtonItem to show the menu
