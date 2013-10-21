@@ -7,7 +7,7 @@ PATH
       motion-cocoapods
 
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     ProMotion (1.0.1)
     activesupport (3.2.13)
@@ -65,8 +65,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  ProMotion (>= 0.5.2)
-  bubble-wrap
-  motion-cocoapods
   motion-stump
   pro_motion_slide_menu!
+  rake
