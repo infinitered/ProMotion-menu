@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.authors       = ["Matt Brewer"]
   s.email         = 'matt.brewer@me.com'
 
-  s.summary       = "Provides a facebook/Path style slide menu on the left for ProMotion RubyMotion apps."
-  s.description   = "Provides a facebook/Path style slide menu on the left for ProMotion RubyMotion apps."
+  s.summary       = "Provides a facebook/Path style slide menu for ProMotion RubyMotion apps."
+  s.description   = "Provides a facebook/Path style slide menu for ProMotion RubyMotion apps."
 
   s.homepage      = "https://github.com/macfanatic/pro_motion_slide_menu"
   s.files         = `git ls-files`.split($\)
