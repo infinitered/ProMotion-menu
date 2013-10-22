@@ -1,6 +1,8 @@
 language: objective-c
 gemfile:
   - Gemfile
-before_script: bundle install
+before_script:
+- "bundle exec pod setup --silent"
+- "bundle exec rake pod:install -s"
 script: bundle exec rake spec
 bump: 2
