@@ -19,8 +19,8 @@ Motion::Project::App.setup do |app|
   # THIS WON'T WORK until the following issue is resolved with motion-cocoapods
   # https://github.com/HipByte/motion-cocoapods/issues/38
   #
-  # app.pods do
-    # pod 'PKRevealController'
-  # end
+  app.pods do
+    pod 'PKRevealController'
+  end
 
 end

@@ -24,13 +24,7 @@ This depends on motion-cocoapods, BubbleWrap and ProMotion.
 
 ### Rakefile
 
-Currently there is a bug with [motion-cocoapods](https://github.com/HipByte/motion-cocoapods/issues/38) that doesn't allow us to automatically include an ObjC library automatically.  Because of this, you will need to edit your Rakefile as follows:
-
-```ruby
-app.pods do
-  pod 'PKRevealController'
-end
-```
+As of [motion-cocoapods](https://github.com/HipByte/motion-cocoapods/compare/1.3.6...1.3.7) v1.3.7, you no longer have to include a pods setup block in your project Rakefile, we can do that for you in the gem.
 
 ## Creating and Configuring a Slide Menu
 To create a slide menu in your application, you need to start in your AppDelegate:
