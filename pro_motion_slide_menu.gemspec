@@ -7,16 +7,19 @@ Gem::Specification.new do |s|
   s.email         = 'matt.brewer@me.com'
 
   s.summary       = "Provides a facebook/Path style slide menu for ProMotion RubyMotion apps."
-  s.description   = "Provides a facebook/Path style slide menu for ProMotion RubyMotion apps."
+  s.description   = "ProMotion DSL integration with PKRevealController cocoapod providing a left and/or right 'slide' out menu complete with gestures for reveal/hide."
 
   s.homepage      = "https://github.com/macfanatic/pro_motion_slide_menu"
-  s.files         = `git ls-files`.split($\)
-  s.test_files    = s.files.grep(%r{^spec/})
+  s.files         = Dir["lib/**/*"] + ["README.md"]
+  s.test_files    = Dir["spec/**/*"]
   s.require_paths = ['lib']
+  s.license       = "MIT"
 
   s.add_dependency "bubble-wrap"
   s.add_dependency "motion-cocoapods"
   s.add_dependency "ProMotion", '~> 1.0'
+
+  s.add_development_dependency "rake"
   s.add_development_dependency "motion-stump"
 
 end
