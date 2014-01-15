@@ -22,21 +22,21 @@ module ProMotionSlideMenu
       screen
     end
 
-    def show(side)
-      self.show_left if side == :left
-      self.show_right if side == :right
+    def show(side, animated=true)
+      self.show_left(animated) if side == :left
+      self.show_right(animated) if side == :right
     end
 
-    def show_left
-      self.showViewController left_controller, animated: true, completion: default_completion_block
+    def show_left(animated = true)
+      self.showViewController left_controller, animated: animated, completion: default_completion_block
     end
 
-    def show_right
-      self.showViewController right_controller, animated: true, completion: default_completion_block
+    def show_right(animated = true)
+      self.showViewController right_controller, animated: animated, completion: default_completion_block
     end
 
-    def hide
-      self.showViewController content_controller, animated: true, completion: default_completion_block
+    def hide(animated = true)
+      self.showViewController content_controller, animated: animated, completion: default_completion_block
     end
 
     def left_controller=(c)
