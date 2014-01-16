@@ -30,6 +30,12 @@ describe ProMotionSlideMenu::SlideMenuScreen do
     wait(0.5) { screen.focusedController.should == @left }
   end
 
+  it "should present the menu controller without animation when requested" do
+    screen = ProMotionSlideMenu::SlideMenuScreen.new @content, left: @left
+    screen.show(:left, false)
+    wait(0.1) { screen.focusedController.should == @left }
+  end
+
   it "should present the content controller when requested" do
     screen = ProMotionSlideMenu::SlideMenuScreen.new @content, left: @left
     screen.hide
