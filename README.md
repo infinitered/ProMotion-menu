@@ -30,7 +30,7 @@ As of [motion-cocoapods](https://github.com/HipByte/motion-cocoapods/compare/1.3
 To create a slide menu in your application, you need to start in your AppDelegate:
 
 ```ruby
-class AppDelegate < ProMotion::AppDelegateParent
+class AppDelegate < PM::Delegate
 
   def on_load(app, options)
 
