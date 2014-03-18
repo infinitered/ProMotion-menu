@@ -15,7 +15,6 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
   s.license       = "MIT"
 
-  s.add_dependency "bubble-wrap"
   s.add_dependency "motion-cocoapods"
   s.add_dependency "ProMotion", '~> 1'
 

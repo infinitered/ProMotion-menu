@@ -20,7 +20,7 @@ bundle install
 ```
 
 ### Dependenices
-This depends on motion-cocoapods, BubbleWrap and ProMotion.
+This depends on motion-cocoapods and ProMotion.
 
 ### Rakefile
 
