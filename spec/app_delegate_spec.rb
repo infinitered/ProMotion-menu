@@ -1,7 +1,7 @@
 describe ProMotionSlideMenu::AppDelegate do
 
   before do
-    @delegate = App.delegate
+    @delegate = UIApplication.sharedApplication.delegate
   end
 
   it "should have a 'slide_menu' attribute" do
