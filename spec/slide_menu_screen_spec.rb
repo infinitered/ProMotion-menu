@@ -1,7 +1,7 @@
 describe ProMotionSlideMenu::SlideMenuScreen do
 
   before do
-    @delegate = App.delegate
+    @delegate = UIApplication.sharedApplication.delegate
     @left = LeftNavScreen.new
     @right = RightNavScreen.new
     @content = BlankScreen.new
