@@ -19,7 +19,7 @@ Motion::Project::App.setup do |app|
   # https://github.com/HipByte/motion-cocoapods/issues/38
   #
   app.pods do
-    pod 'PKRevealController', '1.0b2'
+    pod 'PKRevealController', '2.01'
   end
 
 end
