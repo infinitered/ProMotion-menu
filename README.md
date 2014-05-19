@@ -113,6 +113,7 @@ class MyScreen < ProMotion::Screen
   def on_load
 
     # Create a button with a custom bg & image
+    # Example `.custom` method comes from Sugarcube gem: https://github.com/rubymotion/sugarcube#uibutton
     swipe_btn = UIButton.custom
     swipe_btn.setBackgroundImage("nav_bar_menu_show_bg".uiimage, forState: :normal.uicontrolstate)
     swipe_btn.setImage("nav_bar_menu_show".uiimage, forState: :normal.uicontrolstate)
