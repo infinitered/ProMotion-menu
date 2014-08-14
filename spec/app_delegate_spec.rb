@@ -1,4 +1,4 @@
-describe ProMotionSlideMenu::AppDelegate do
+describe ProMotion::AppDelegate do
 
   before do
     @delegate = UIApplication.sharedApplication.delegate
@@ -16,14 +16,14 @@ describe ProMotionSlideMenu::AppDelegate do
     @delegate.respond_to?(:open_slide_menu).should == true
   end
 
-  it "#open_slide_menu should return a SlideMenuScreen" do
-    @delegate.open_slide_menu(BlankScreen, left: LeftNavScreen).should.be.instance_of ProMotionSlideMenu::SlideMenuScreen
+  it "#open_slide_menu should return a Menu::Drawer" do
+    @delegate.open_slide_menu(BlankScreen, left: LeftNavScreen).should.be.instance_of ProMotion::Menu::Drawer
   end
 
-  it "should have a SlideMenuScreen as the rootViewController" do
+  it "should have a Menu::Drawer as the rootViewController" do
     @delegate.open_slide_menu(BlankScreen)
 
-    @delegate.window.rootViewController.should.be.instance_of ProMotionSlideMenu::SlideMenuScreen
+    @delegate.window.rootViewController.should.be.instance_of ProMotion::Menu::Drawer
   end
 
 end

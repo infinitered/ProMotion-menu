@@ -1,4 +1,4 @@
-module ProMotionSlideMenu
+module ProMotion
   module AppDelegate
 
     def self.included(base)
@@ -10,7 +10,7 @@ module ProMotionSlideMenu
     end
 
     def open_slide_menu(content, options={})
-      self.slide_menu = SlideMenuScreen.new(content, options)
+      self.slide_menu = ProMotion::Menu::Drawer.new(content, options)
       open_root_screen slide_menu
       slide_menu
     end
@@ -18,4 +18,4 @@ module ProMotionSlideMenu
   end
 end
 
-PM::Delegate.send :include, ProMotionSlideMenu::AppDelegate
+PM::Delegate.send :include, ProMotion::AppDelegate
