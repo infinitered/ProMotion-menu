@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.email         = 'matt.brewer@me.com'
 
   s.summary       = "Provides a facebook/Path style slide menu for ProMotion RubyMotion apps."
-  s.description   = "ProMotion DSL integration with PKRevealController cocoapod providing a left and/or right 'slide' out menu complete with gestures for reveal/hide."
+  s.description   = "ProMotion DSL integration with MMDrawerController cocoapod providing a left and/or right 'slide' out menu complete with gestures for reveal/hide."
 
   s.homepage      = "https://github.com/macfanatic/pro_motion_slide_menu"
   s.files         = Dir["lib/**/*"] + ["README.md"]

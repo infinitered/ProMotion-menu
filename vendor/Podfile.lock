@@ -1,10 +1,21 @@
 PODS:
-  - PKRevealController (1.0b2)
+  - MMDrawerController (0.5.6):
+    - MMDrawerController/Core
+    - MMDrawerController/MMDrawerBarButtonItem
+    - MMDrawerController/MMDrawerVisualStates
+    - MMDrawerController/Subclass
+  - MMDrawerController/Core (0.5.6)
+  - MMDrawerController/MMDrawerBarButtonItem (0.5.6):
+    - MMDrawerController/Core
+  - MMDrawerController/MMDrawerVisualStates (0.5.6):
+    - MMDrawerController/Core
+  - MMDrawerController/Subclass (0.5.6):
+    - MMDrawerController/Core
 
 DEPENDENCIES:
-  - PKRevealController
+  - MMDrawerController (~> 0.5)
 
 SPEC CHECKSUMS:
-  PKRevealController: 631e6a3db833a0c660203c2dba0963109549ec8a
+  MMDrawerController: 4bae84535ca7a5f4cb55a66a001e6035c3571677
 
-COCOAPODS: 0.26.2
+COCOAPODS: 0.33.1
