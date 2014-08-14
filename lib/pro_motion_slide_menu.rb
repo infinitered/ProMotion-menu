@@ -14,12 +14,8 @@ Motion::Project::App.setup do |app|
     app.files << file
   end
 
-  # We have a cocoapod that we rely on
-  # THIS WON'T WORK until the following issue is resolved with motion-cocoapods
-  # https://github.com/HipByte/motion-cocoapods/issues/38
-  #
   app.pods do
-    pod 'PKRevealController'
+    pod 'MMDrawerController', '~> 0.5'
   end
 
 end
