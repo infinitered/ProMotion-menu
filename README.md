@@ -60,13 +60,13 @@ To make the slide menu present the menu from anywhere in your app:
 App.delegate.slide_menu.show(:left)
 
 # Equivalent to
-App.delegate.slide_menu.showViewController App.delegate.slide_menu.left_controller, animated: true, completion: ->(c) { true }
+App.delegate.slide_menu.openDrawerSide MMDrawerSideLeft, animated: true, completion: ->(c) { true }
 
 # Hide the menu
 App.delegate.slide_menu.hide
 
 # Equivalent to
-App.delegate.slide_menu.showViewController App.delegate.slide_menu.content_controller, animated: true, completion: ->(c) { true }
+App.delegate.slide_menu.closeDrawerAnimated animated: true, completion: ->(c) { true }
 
 ```
 
@@ -94,42 +94,6 @@ class NavigationScreen < ProMotion::TableScreen
 end
 ```
 
-## Showing the menu via gesture
-By default, `PKRevealController` supports showing the slide menu via a gesture recognizer.  To disable this feature, look at the documentation or use the following:
+## More Information
 
-```ruby
-# Disable the gesture recongizer
-App.delegate.slide_menu.removePanGestureRecognizerFromFrontView
-
-# Re-enable the gesture recognizer (enabled by default)
-App.delegate.slide_menu.addPanGestureRecognizerToFrontView
-```
-
-## Creating a UIBarButtonItem to show the menu
-You may want to create a button for users to show the menu in addition to the gesture recognizer.  To do so, in your Screen class:
-
-```ruby
-class MyScreen < ProMotion::Screen
-  def on_load
-
-    # Create a button with a custom bg & image
-    # Example `.custom` method comes from Sugarcube gem: https://github.com/rubymotion/sugarcube#uibutton
-    swipe_btn = UIButton.custom
-    swipe_btn.setBackgroundImage("nav_bar_menu_show_bg".uiimage, forState: :normal.uicontrolstate)
-    swipe_btn.setImage("nav_bar_menu_show".uiimage, forState: :normal.uicontrolstate)
-    size = "nav_bar_menu_show_bg".uiimage.size
-    swipe_btn.frame = CGRectMake(0, 0, size.width, size.height)
-
-     # Create a Bar button item containing that button
-     # When tapping the button, show the menu (uses Sugarcube syntax)
-    @left_item = UIBarButtonItem.alloc.initWithCustomView(swipe_btn)
-    swipe_btn.on(:touch.uicontrolevent) do
-      App.delegate.slide_menu.show(:left)
-    end
-
-    # Assign the button item to the navigation item for it to appear in the top left
-    self.navigationItem.leftBarButtonItem = @left_item
-
-  end
-end
-```
+Be sure to check out more documenation from the cocoapod itself, for fun things such as gesture support for showing or dismissing drawers, custom UIBarButtonItems and more.
