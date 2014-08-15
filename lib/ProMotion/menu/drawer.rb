@@ -2,17 +2,22 @@ module ProMotion
   module Menu
     class Drawer < MMDrawerController
       include ::ProMotion::ScreenModule
+      include ::ProMotion::Menu::Gestures
 
       def self.new(center, options={})
         left_vc = options.fetch(:left, nil)
         right_vc = options.fetch(:right, nil)
+        open_with = options.fetch(:open_with, nil)
+        close_with = options.fetch(:close_with, nil)
 
         menu = alloc.init
         menu.center_controller = center unless center.nil?
         menu.left_controller = left_vc if left_vc
         menu.right_controller = right_vc if right_vc
+        menu.open_gestures = open_with if open_with
+        menu.close_gestures = close_with if close_with
 
-        menu_options = options.reject { |k,v| [:left, :right].include? k }
+        menu_options = options.reject { |k,v| [:left, :right, :open_with, :close_with].include? k }
         menu.on_create(menu_options) if menu.respond_to?(:on_create)
         menu
       end
@@ -73,6 +78,14 @@ module ProMotion
         self.left_controller if side == :left
         self.right_controller if side == :right
         self.center_controller if side == :content || side == :center
+      end
+
+      def open_gestures=(gestures)
+        self.openDrawerGestureModeMask = mask_for_open(gestures)
+      end
+
+      def close_gestures=(gestures)
+        self.closeDrawerGestureModeMask = mask_for_close(gestures)
       end
 
     protected
