@@ -18,23 +18,6 @@ module ProMotion
         self.send(:setup) if self.respond_to?(:setup)
       end
 
-      def show(side, animated=true)
-        self.show_left(animated) if side == :left
-        self.show_right(animated) if side == :right
-      end
-
-      def show_left(animated=true)
-        openDrawerSide MMDrawerSideLeft, animated: animated, completion: default_completion_block
-      end
-
-      def show_right(animated=true)
-        openDrawerSide MMDrawerSideRight, animated: animated, completion: default_completion_block
-      end
-
-      def hide(animated=true)
-        closeDrawerAnimated animated, completion: default_completion_block
-      end
-
       def left_controller=(c)
         self.leftDrawerViewController = prepare_controller_for_pm(c)
       end
@@ -81,6 +64,23 @@ module ProMotion
         return self.left_controller if side == :left
         return self.right_controller if side == :right
         self.center_controller if side == :content || side == :center
+      end
+
+      def show(side, animated=true)
+        self.show_left(animated) if side == :left
+        self.show_right(animated) if side == :right
+      end
+
+      def show_left(animated=true)
+        openDrawerSide MMDrawerSideLeft, animated: animated, completion: default_completion_block
+      end
+
+      def show_right(animated=true)
+        openDrawerSide MMDrawerSideRight, animated: animated, completion: default_completion_block
+      end
+
+      def hide(animated=true)
+        closeDrawerAnimated animated, completion: default_completion_block
       end
 
       def to_show=(gestures)
