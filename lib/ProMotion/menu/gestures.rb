@@ -9,6 +9,7 @@ module ProMotion
         pan_bezel: MMOpenDrawerGestureModeBezelPanningCenterView,  # Pan anywhere within 20 pts of the bezel
         none: MMOpenDrawerGestureModeNone                          # No gesture recognition
       }
+
       HIDE_MASKS = {
         pan_nav_bar: MMCloseDrawerGestureModePanningNavigationBar,  # Pan anywhere on the navigation bar
         pan_content: MMCloseDrawerGestureModePanningCenterView,     # Pan anywhere on the center view
