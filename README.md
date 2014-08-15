@@ -126,3 +126,22 @@ end
 ## More Information
 
 Be sure to check out more documenation from the [cocoapod itself](http://cocoadocs.org/docsets/MMDrawerController/0.5.6/), for fun things such as gesture support for showing or dismissing drawers, custom UIBarButtonItems and more.
+
+### Help
+
+ProMotion is not only an easy DSL to get started. The community is very helpful and
+welcoming to new RubyMotion developers. We don't mind newbie questions.
+
+If you need help, feel free to open an issue on GitHub. If we don't respond within a day, tweet us a link to the issue -- sometimes we get busy.
+
+### Contributing
+
+See [CONTRIBUTING.md](https://github.com/clearsightstudio/ProMotion/blob/master/CONTRIBUTING.md).
+
+### Primary Contributors
+
+* Matt Brewer: [@macfanatic](https://github.com/macfanatic)
+* Ryan Linton: [@ryanlntn](https://twitter.com/ryanlntn)
+* Jason Stirk: [@jstirk](https://github.com/jstirk)
+* Mark Rickert: [@markrickert](https://twitter.com/markrickert)
+* [Many others](https://github.com/clearsightstudio/ProMotion-menu/graphs/contributors)
