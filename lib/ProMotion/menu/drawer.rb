@@ -13,7 +13,7 @@ module ProMotion
       def auto_setup(center, options={})
         options[:to_show] ||= :pan_bezel
         options[:to_hide] ||= [:pan_center, :tap_center]
-        options[:center] ||= center
+        options[:center] ||= center if center
         set_attributes self, options
         self.send(:setup) if self.respond_to?(:setup)
       end
