@@ -2,14 +2,14 @@ module ProMotion
   module Menu
     module Gestures
 
-      OPEN_MASKS = {
+      SHOW_MASKS = {
         pan_nav_bar: MMOpenDrawerGestureModePanningNavigationBar,  # Pan anywhere on the navigation bar
         pan_content: MMOpenDrawerGestureModePanningCenterView,     # Pan anywhere on the center view
         pan_center: MMOpenDrawerGestureModePanningCenterView,      # Alias of above
         pan_bezel: MMOpenDrawerGestureModeBezelPanningCenterView,  # Pan anywhere within 20 pts of the bezel
         none: MMOpenDrawerGestureModeNone                          # No gesture recognition
       }
-      CLOSE_MASKS = {
+      HIDE_MASKS = {
         pan_nav_bar: MMCloseDrawerGestureModePanningNavigationBar,  # Pan anywhere on the navigation bar
         pan_content: MMCloseDrawerGestureModePanningCenterView,     # Pan anywhere on the center view
         pan_center: MMCloseDrawerGestureModePanningCenterView,      # Alias of above
@@ -21,18 +21,18 @@ module ProMotion
         none: MMCloseDrawerGestureModeNone                          # No gesture recognition
       }
 
-      def mask_for_open(gestures)
+      def mask_for_show(gestures)
         mask = 0
         Array(gestures).each do |g|
-          mask = mask | OPEN_MASKS[g]
+          mask = mask | SHOW_MASKS[g]
         end
         mask
       end
 
-      def mask_for_close(gestures)
+      def mask_for_hide(gestures)
         mask = 0
         Array(gestures).each do |g|
-          mask = mask | CLOSE_MASKS[g]
+          mask = mask | HIDE_MASKS[g]
         end
         mask
       end

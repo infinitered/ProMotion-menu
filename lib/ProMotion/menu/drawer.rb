@@ -7,17 +7,17 @@ module ProMotion
       def self.new(center, options={})
         left_vc = options.fetch(:left, nil)
         right_vc = options.fetch(:right, nil)
-        open_with = options.fetch(:open_with, nil)
-        close_with = options.fetch(:close_with, nil)
+        to_show = options.fetch(:to_show, :pan_bezel)
+        to_hide = options.fetch(:to_hide, [:pan_center, :tap_center])
 
         menu = alloc.init
         menu.center_controller = center unless center.nil?
         menu.left_controller = left_vc if left_vc
         menu.right_controller = right_vc if right_vc
-        menu.open_gestures = open_with if open_with
-        menu.close_gestures = close_with if close_with
+        menu.to_show = to_show if to_show
+        menu.to_hide = to_hide if to_hide
 
-        menu_options = options.reject { |k,v| [:left, :right, :open_with, :close_with].include? k }
+        menu_options = options.reject { |k,v| [:left, :right, :to_show, :to_hide].include? k }
         menu.on_create(menu_options) if menu.respond_to?(:on_create)
         menu
       end
@@ -71,7 +71,6 @@ module ProMotion
         self.center_controller = side[:center] if side[:center]
         self.center_controller ||= side[:content] if side[:content]
       end
-
       alias_method :controllers=, :controller=
 
       def controller(side)
@@ -80,12 +79,12 @@ module ProMotion
         self.center_controller if side == :content || side == :center
       end
 
-      def open_gestures=(gestures)
-        self.openDrawerGestureModeMask = mask_for_open(gestures)
+      def to_show=(gestures)
+        self.openDrawerGestureModeMask = mask_for_show(gestures)
       end
 
-      def close_gestures=(gestures)
-        self.closeDrawerGestureModeMask = mask_for_close(gestures)
+      def to_hide=(gestures)
+        self.closeDrawerGestureModeMask = mask_for_hide(gestures)
       end
 
     protected
