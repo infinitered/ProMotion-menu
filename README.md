@@ -46,6 +46,33 @@ class AppDelegate < PM::Delegate
 end
 ```
 
+### Alternate Approach
+If you prefer to keep your menu encapsulated you can create a menu drawer and do your setup there.
+
+```ruby
+class MenuDrawer < PM::Menu::Drawer
+
+  def setup
+    self.center = MyGreatAppScreen.new(nav_bar: true)
+    self.left = NavigationScreen
+    self.to_show = [:tap_nav_bar, :pan_nav_bar]
+  end
+
+end
+
+class AppDelegate < PM::Delegate
+
+  def on_load(app, options)
+    @menu = open MenuDrawer
+  end
+
+  def show_menu
+    @menu.show :left
+  end
+
+end
+```
+
 ## Gesture Recognition
 By default you can show the menu by panning within 20 pts of the bezel and hide it by panning or tapping
 the center view. It's possible to override the default behavior:
@@ -80,8 +107,8 @@ app_delegate.menu.to_show = :pan_center
 
 ```
 
-## Toggling the Menu Current Screen
-To make the slide menu present the menu from anywhere in your app:
+## Toggling the Menu Drawer Current Screen
+To make the menu drawer present the menu from anywhere in your app:
 
 ```ruby
 
@@ -117,7 +144,7 @@ class NavigationScreen < ProMotion::TableScreen
   end
 
   def swap_center_controller(screen_class)
-    app_delegate.menu.controller(center: screen_class)
+    app_delegate.menu.center_controller = screen_class
   end
 
 end

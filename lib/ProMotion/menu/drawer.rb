@@ -4,22 +4,18 @@ module ProMotion
       include ::ProMotion::ScreenModule
       include ::ProMotion::Menu::Gestures
 
-      def self.new(center, options={})
-        left_vc = options.fetch(:left, nil)
-        right_vc = options.fetch(:right, nil)
-        to_show = options.fetch(:to_show, :pan_bezel)
-        to_hide = options.fetch(:to_hide, [:pan_center, :tap_center])
-
+      def self.new(center=nil, options={})
         menu = alloc.init
-        menu.center_controller = center unless center.nil?
-        menu.left_controller = left_vc if left_vc
-        menu.right_controller = right_vc if right_vc
-        menu.to_show = to_show if to_show
-        menu.to_hide = to_hide if to_hide
-
-        menu_options = options.reject { |k,v| [:left, :right, :to_show, :to_hide].include? k }
-        menu.on_create(menu_options) if menu.respond_to?(:on_create)
+        menu.send(:auto_setup, center, options)
         menu
+      end
+
+      def auto_setup(center, options={})
+        options[:to_show] ||= :pan_bezel
+        options[:to_hide] ||= [:pan_center, :tap_center]
+        options[:center] ||= center
+        set_attributes self, options
+        self.send(:setup) if self.respond_to?(:setup)
       end
 
       def show(side, animated=true)
@@ -42,28 +38,36 @@ module ProMotion
       def left_controller=(c)
         self.leftDrawerViewController = prepare_controller_for_pm(c)
       end
+      alias_method :left=, :left_controller=
 
       def left_controller
         self.leftDrawerViewController
       end
+      alias_method :left, :left_controller
 
       def right_controller=(c)
         self.rightDrawerViewController = prepare_controller_for_pm(c)
       end
+      alias_method :right=, :right_controller=
 
       def right_controller
         self.rightDrawerViewController
       end
+      alias_method :right, :right_controller
 
       def center_controller=(c)
         self.centerViewController = prepare_controller_for_pm(c)
       end
       alias_method :content_controller=, :center_controller=
+      alias_method :center=, :center_controller=
+      alias_method :content=, :center_controller=
 
       def center_controller
         self.centerViewController
       end
       alias_method :content_controller, :center_controller
+      alias_method :center, :center_controller
+      alias_method :content, :center_controller
 
       def controller=(side={})
         self.left_controller = side[:left] if side[:left]
@@ -74,8 +78,8 @@ module ProMotion
       alias_method :controllers=, :controller=
 
       def controller(side)
-        self.left_controller if side == :left
-        self.right_controller if side == :right
+        return self.left_controller if side == :left
+        return self.right_controller if side == :right
         self.center_controller if side == :content || side == :center
       end
 
