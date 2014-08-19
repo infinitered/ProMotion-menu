@@ -1,7 +1,8 @@
-# ProMotion-menu
-This gem provides an easier way to integrate a great open source toolkit, [RubyMotion](http://www.rubymotion.com), with another great Objective-C framework, [MMDrawerController](https://github.com/mutualmobile/MMDrawerController), allowing you to easily have a cool Facebook or Path style slide navigation menu, complete with gestures.
+# ProMotion-menu [![Gem Version](https://badge.fury.io/rb/ProMotion-menu.png)](http://badge.fury.io/rb/ProMotion-menu) [![Build Status](https://travis-ci.org/clearsightstudio/ProMotion-menu.svg?branch=master)](https://travis-ci.org/clearsightstudio/ProMotion-menu) [![Code Climate](https://codeclimate.com/github/clearsightstudio/ProMotion-menu/badges/gpa.svg)](https://codeclimate.com/github/clearsightstudio/ProMotion-menu) [![Test Coverage](https://codeclimate.com/github/clearsightstudio/ProMotion-menu/badges/coverage.svg)](https://codeclimate.com/github/clearsightstudio/ProMotion-menu)
 
-![Travis CI](https://secure.travis-ci.org/macfanatic/promotion_slide_menu.png?branch=master)
+ProMotion-menu provides a menu component for the popular RubyMotion gem [ProMotion](https://github.com/clearsightstudio/ProMotion). Utilizing [MMDrawerController](https://github.com/mutualmobile/MMDrawerController) it allows you to easily have a cool Facebook or Path style slide navigation menu, complete with gestures.
+
+The gem was originally named `pro_motion_slide_menu` and authored by [Matt Brewer](https://github.com/macfanatic).
 
 ## Installation
 
@@ -92,6 +93,7 @@ app_delegate.menu.to_show = :pan_center
   :pan_content  # Pan anywhere on the center view
   :pan_center   # Alias of above
   :pan_bezel    # Pan anywhere within 20 pts of the bezel
+  :all          # All of the above
   :none         # No gesture recognition
 
   # For to_hide:
@@ -103,6 +105,7 @@ app_delegate.menu.to_show = :pan_center
   :tap_content   # Tap the center view
   :tap_center    # Alias of above
   :pan_menu      # Pan anywhere on the drawer view
+  :all           # All of the above
   :none          # No gesture recognition
 
 ```
@@ -171,4 +174,5 @@ See [CONTRIBUTING.md](https://github.com/clearsightstudio/ProMotion/blob/master/
 * Ryan Linton: [@ryanlntn](https://twitter.com/ryanlntn)
 * Jason Stirk: [@jstirk](https://github.com/jstirk)
 * Mark Rickert: [@markrickert](https://twitter.com/markrickert)
+* Jamon Holmgren: [@jamonholmgren](https://twitter.com/jamonholmgren)
 * [Many others](https://github.com/clearsightstudio/ProMotion-menu/graphs/contributors)
