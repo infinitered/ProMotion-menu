@@ -14,6 +14,10 @@ module ProMotionSlideMenu
       right_vc = options.fetch(:right, nil)
 
       screen = alloc.init
+
+      screen.openDrawerGestureModeMask = MMOpenDrawerGestureModePanningNavigationBar
+      screen.closeDrawerGestureModeMask = MMCloseDrawerGestureModePanningNavigationBar
+
       screen.content_controller = content unless content.nil?
       screen.left_controller = left_vc if left_vc
       screen.right_controller = right_vc if right_vc
