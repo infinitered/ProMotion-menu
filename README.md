@@ -41,6 +41,11 @@ class AppDelegate < PM::Delegate
     slide_menu.controller(:left).class.name
     # => NavigationScreen
 
+    # To easily change the gestures used to show or hide the drawers
+    slide_menu.gesture_type = :bezel
+    slide_menu.gesture_type
+    # => :bezel
+
     # SlideMenuScreen is just an enhanced subclass of MMDrawerController, so you can do all sorts of things with it
     slide_menu.statusBarViewBackgroundColor = UIColor.redColor
     slide_menu.openDrawerGestureModeMask = MMOpenDrawerGestureModePanningNavigationBar
