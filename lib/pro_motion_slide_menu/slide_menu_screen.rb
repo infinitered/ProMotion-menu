@@ -2,6 +2,7 @@ module ProMotionSlideMenu
   class SlideMenuScreen < MMDrawerController
 
     include ::ProMotion::ScreenModule
+    include Gestures
 
     #
     # SlideMenuScreen
@@ -15,8 +16,7 @@ module ProMotionSlideMenu
 
       screen = alloc.init
 
-      screen.openDrawerGestureModeMask = MMOpenDrawerGestureModePanningNavigationBar
-      screen.closeDrawerGestureModeMask = MMCloseDrawerGestureModePanningNavigationBar
+      screen.gesture_type = :nav
 
       screen.content_controller = content unless content.nil?
       screen.left_controller = left_vc if left_vc
