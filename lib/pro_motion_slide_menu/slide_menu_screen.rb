@@ -1,5 +1,5 @@
 module ProMotionSlideMenu
-  class SlideMenuScreen < PKRevealController
+  class SlideMenuScreen < MMDrawerController
 
     include ::ProMotion::ScreenModule
 
@@ -8,15 +8,20 @@ module ProMotionSlideMenu
     #
     # This is added as the root view controller when using the `open_slide_menu` method in your application delegate.
     #
-    # Several properties are defined to get the underlying PKRevealController instance for additional configuration, the
-    # screen shown as the hidden menu, and the screen shown as the content controller.
-    #
 
     def self.new(content, options={})
-      screen = self.revealControllerWithFrontViewController(nil, leftViewController: nil, options: nil)
+      left_vc = options.fetch(:left, nil)
+      right_vc = options.fetch(:right, nil)
+
+      screen = alloc.init
+
+      screen.openDrawerGestureModeMask = MMOpenDrawerGestureModePanningNavigationBar
+      screen.closeDrawerGestureModeMask = MMCloseDrawerGestureModePanningNavigationBar
+
       screen.content_controller = content unless content.nil?
-      screen.left_controller = options[:left] if options[:left]
-      screen.right_controller = options[:right] if options[:right]
+      screen.left_controller = left_vc if left_vc
+      screen.right_controller = right_vc if right_vc
+
       screen_options = options.reject { |k,v| [:left, :right].include? k }
       screen.on_create(screen_options) if screen.respond_to?(:on_create)
       screen
@@ -28,45 +33,45 @@ module ProMotionSlideMenu
     end
 
     def show_left(animated = true)
-      self.showViewController left_controller, animated: animated, completion: default_completion_block
+      openDrawerSide MMDrawerSideLeft, animated: animated, completion: default_completion_block
     end
 
     def show_right(animated = true)
-      self.showViewController right_controller, animated: animated, completion: default_completion_block
+      openDrawerSide MMDrawerSideRight, animated: animated, completion: default_completion_block
     end
 
     def hide(animated = true)
-      self.showViewController content_controller, animated: animated, completion: default_completion_block
+      closeDrawerAnimated animated, completion: default_completion_block
     end
 
     def left_controller=(c)
       controller = prepare_controller_for_pm(c)
       controller = controller.navigationController || controller
-      self.setLeftViewController controller, focusAfterChange: true, completion: default_completion_block
+      self.leftDrawerViewController = controller
     end
 
     def left_controller
-      self.leftViewController
+      self.leftDrawerViewController
     end
 
     def right_controller=(c)
       controller = prepare_controller_for_pm(c)
       controller = controller.navigationController || controller
-      self.setRightViewController controller, focusAfterChange: true, completion: default_completion_block
+      self.rightDrawerViewController = controller
     end
 
     def right_controller
-      self.rightViewController
+      self.rightDrawerViewController
     end
 
     def content_controller=(c)
       controller = prepare_controller_for_pm(c)
       controller = controller.navigationController || controller
-      self.setFrontViewController controller, focusAfterChange: true, completion: default_completion_block
+      self.centerViewController = controller
     end
 
     def content_controller
-      self.frontViewController
+      self.centerViewController
     end
 
     def controller=(side={})

@@ -8,7 +8,7 @@ describe ProMotionSlideMenu::SlideMenuScreen do
   end
 
   it "should return an instance of SlideMenuScreen" do
-    screen = ProMotionSlideMenu::SlideMenuScreen.new nil, left: nil
+    screen = ProMotionSlideMenu::SlideMenuScreen.new @content, left: @left
     screen.should.be.instance_of ProMotionSlideMenu::SlideMenuScreen
   end
 
@@ -27,19 +27,19 @@ describe ProMotionSlideMenu::SlideMenuScreen do
   it "should present the menu controller when requested" do
     screen = ProMotionSlideMenu::SlideMenuScreen.new @content, left: @left
     screen.show(:left)
-    wait(0.5) { screen.focusedController.should == @left }
+    wait(0.5) { screen.openSide.should == MMDrawerSideLeft }
   end
 
   it "should present the menu controller without animation when requested" do
     screen = ProMotionSlideMenu::SlideMenuScreen.new @content, left: @left
     screen.show(:left, false)
-    wait(0.1) { screen.focusedController.should == @left }
+    wait(0.1) { screen.openSide.should == MMDrawerSideLeft }
   end
 
   it "should present the content controller when requested" do
     screen = ProMotionSlideMenu::SlideMenuScreen.new @content, left: @left
     screen.hide
-    wait(0.5) { screen.focusedController.should == @content }
+    wait(0.5) { screen.openSide.should == MMDrawerSideNone }
   end
 
   it "should let me wrap the content controller in a UINavigationController" do
@@ -55,7 +55,7 @@ describe ProMotionSlideMenu::SlideMenuScreen do
   end
 
   it "should accept a plain UIViewController" do
-    screen = ProMotionSlideMenu::SlideMenuScreen.new nil, left: nil
+    screen = ProMotionSlideMenu::SlideMenuScreen.new @content, left: @left
     should.not.raise(NoMethodError) { screen.left_controller = UIViewController }
     screen.left_controller.should.be.instance_of UIViewController
   end
