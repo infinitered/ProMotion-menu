@@ -7,6 +7,7 @@ module ProMotion
         pan_content: MMOpenDrawerGestureModePanningCenterView,     # Pan anywhere on the center view
         pan_center: MMOpenDrawerGestureModePanningCenterView,      # Alias of above
         pan_bezel: MMOpenDrawerGestureModeBezelPanningCenterView,  # Pan anywhere within 20 pts of the bezel
+        all: MMOpenDrawerGestureModeAll,                           # All of the above
         none: MMOpenDrawerGestureModeNone                          # No gesture recognition
       }
 
@@ -19,6 +20,7 @@ module ProMotion
         tap_content: MMCloseDrawerGestureModeTapCenterView,         # Tap the center view
         tap_center: MMCloseDrawerGestureModeTapCenterView,          # Alias of above
         pan_menu: MMCloseDrawerGestureModePanningDrawerView,        # Pan anywhere on the drawer view
+        all: MMCloseDrawerGestureModeAll,                           # All of the above
         none: MMCloseDrawerGestureModeNone                          # No gesture recognition
       }
 

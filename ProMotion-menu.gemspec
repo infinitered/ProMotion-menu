@@ -3,8 +3,8 @@ require File.expand_path('../lib/ProMotion/menu/version.rb', __FILE__)
 Gem::Specification.new do |s|
   s.name          = 'ProMotion-menu'
   s.version       = ProMotion::Menu::VERSION
-  s.authors       = ["Matt Brewer", "Ryan Linton"]
-  s.email         = ['matt.brewer@me.com', 'ryanl@clearsightstudio.com']
+  s.authors       = ["Matt Brewer", "Ryan Linton", "Jamon Holmgren"]
+  s.email         = ['matt.brewer@me.com', 'ryanl@clearsightstudio.com', 'jamon@clearsightstudio.com']
 
   s.summary       = "Provides a facebook/Path style slide menu for ProMotion RubyMotion apps."
   s.description   = "ProMotion DSL integration with MMDrawerController cocoapod providing a left and/or right 'slide' out menu complete with gestures for reveal/hide."
