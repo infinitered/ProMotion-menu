@@ -24,24 +24,6 @@ describe ProMotion::Menu::Drawer do
     menu.center_controller.should.be.instance_of BlankScreen
   end
 
-  it "presents the menu controller when requested" do
-    menu = ProMotion::Menu::Drawer.new @content, left: @left
-    menu.show(:left)
-    wait(0.5) { menu.openSide.should == MMDrawerSideLeft }
-  end
-
-  it "presents the menu controller without animation when requested" do
-    menu = ProMotion::Menu::Drawer.new @content, left: @left
-    menu.show(:left, false)
-    wait(0.1) { menu.openSide.should == MMDrawerSideLeft }
-  end
-
-  it "presents the content controller when requested" do
-    menu = ProMotion::Menu::Drawer.new @content, left: @left
-    menu.hide
-    wait(0.5) { menu.openSide.should == MMDrawerSideNone }
-  end
-
   it "lets me wrap the content controller in a UINavigationController" do
     center_controller = BlankScreen.new(nav_bar: true)
     menu = ProMotion::Menu::Drawer.new center_controller, left: @left
