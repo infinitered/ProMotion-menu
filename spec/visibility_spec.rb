@@ -79,4 +79,25 @@ describe ProMotion::Menu::Visibility do
     end
   end
 
+  describe "#max_left_width" do
+    before do
+      @menu = ProMotion::Menu::Drawer.new @content, left: @left, right: @right
+    end
+
+    it "returns the maximum width for a given drawer" do
+      @menu.max_left_width.should.be.kind_of? Float
+    end
+  end
+
+  describe "#max_left_width=" do
+    before do
+      @menu = ProMotion::Menu::Drawer.new @content, left: @left, right: @right
+    end
+
+    it "sets a maximum drawer width" do
+      @menu.max_left_width = 250
+      @menu.maximumLeftDrawerWidth.should == 250
+    end
+  end
+
 end
