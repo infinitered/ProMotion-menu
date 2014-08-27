@@ -2,7 +2,8 @@ module ProMotion
   module Menu
     class Drawer < MMDrawerController
       include ::ProMotion::ScreenModule
-      include ::ProMotion::Menu::Gestures
+      include Gestures
+      include Visibility
 
       def self.new(center=nil, options={})
         menu = alloc.init
@@ -64,44 +65,6 @@ module ProMotion
         return self.left_controller if side == :left
         return self.right_controller if side == :right
         self.center_controller if [:content, :center].include?(side)
-      end
-
-      def show(side, animated=true)
-        self.show_left(animated) if side == :left
-        self.show_right(animated) if side == :right
-      end
-
-      def show_left(animated=true)
-        openDrawerSide MMDrawerSideLeft, animated: animated, completion: default_completion_block
-      end
-
-      def show_right(animated=true)
-        openDrawerSide MMDrawerSideRight, animated: animated, completion: default_completion_block
-      end
-
-      def hide(animated=true)
-        closeDrawerAnimated animated, completion: default_completion_block
-      end
-
-      def toggle(side, animated=true)
-        toggle_left(animated) if side == :left
-        toggle_right(animated) if side == :right
-      end
-
-      def toggle_left(animated=true)
-        toggleDrawerSide MMDrawerSideLeft, animated: animated, completion: default_completion_block 
-      end
-
-      def toggle_right(animated=true)
-        toggleDrawerSide MMDrawerSideRight, animated: animated, completion: default_completion_block 
-      end
-
-      def to_show=(gestures)
-        self.openDrawerGestureModeMask = mask_for_show(gestures)
-      end
-
-      def to_hide=(gestures)
-        self.closeDrawerGestureModeMask = mask_for_hide(gestures)
       end
 
     protected
