@@ -63,7 +63,7 @@ module ProMotion
       def controller(side)
         return self.left_controller if side == :left
         return self.right_controller if side == :right
-        self.center_controller if side == :content || side == :center
+        self.center_controller if [:content, :center].include?(side)
       end
 
       def show(side, animated=true)

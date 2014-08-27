@@ -9,7 +9,6 @@ Motion::Project::App.setup do |app|
   core_lib = File.join(File.dirname(__FILE__), 'ProMotion')
   insert_point = app.files.find_index { |file| file =~ /^(?:\.\/)?app\// } || 0
 
-  version_file = nil
   Dir.glob(File.join(File.dirname(__FILE__), 'ProMotion/menu/**/*.rb')).each do |file|
     app.files << file
   end
