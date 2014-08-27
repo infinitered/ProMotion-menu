@@ -67,4 +67,57 @@ describe ProMotion::Menu::Drawer do
     menu.center_controller.should == @content
   end
 
+  describe "#toggle" do
+    before do
+      @menu = ProMotion::Menu::Drawer.new @content, left: @left, right: @right
+    end
+
+    describe "from left" do
+
+      it "opens the menu " do
+        @menu.toggle(:left)
+        wait 0.25 do
+          @menu.openSide.should == MMDrawerSideLeft
+        end
+      end
+
+      it "closes the menu" do
+        @menu.show(:left)
+        wait 0.25 do
+
+          @menu.openSide.should == MMDrawerSideLeft
+          @menu.toggle(:left)
+
+          wait 0.25 do
+            @menu.openSide.should == MMDrawerSideNone
+          end
+        end
+      end
+    end
+
+    describe "from right" do
+      
+      it "opens the menu" do
+        @menu.toggle(:right)
+        wait 0.25 do
+          @menu.openSide.should == MMDrawerSideRight
+        end
+      end
+
+      it "closes the menu" do
+        @menu.show(:right)
+        wait 0.25 do
+
+          @menu.openSide.should == MMDrawerSideRight
+          @menu.toggle(:right)
+
+          wait 0.25 do
+            @menu.openSide.should == MMDrawerSideNone
+          end
+        end
+      end
+
+    end
+  end
+
 end
