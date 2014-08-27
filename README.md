@@ -127,6 +127,13 @@ app_delegate.menu.hide
 # Equivalent to
 app_delegate.menu.closeDrawerAnimated animated: true, completion: ->(c) { true }
 
+# Actually toggle the menu between open/closed states
+app_delegate.menu.toggle(:left)
+app_delegate.menu.toggle_left
+
+# Equivalent to
+app_delegate.menu.toggleDrawerSide MMDrawerSideLeft, animated: true, completion: ->(c) { true } 
+
 ```
 
 ## Setting up the Menu
