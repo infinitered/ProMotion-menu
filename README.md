@@ -1,7 +1,8 @@
-# ProMotion SlideMenu
-This gem provides an easier way to integrate a great open source toolkit, [RubyMotion](http://www.rubymotion.com), with another great Objective-C framework, [MMDrawerController](https://github.com/mutualmobile/MMDrawerController), allowing you to easily have a cool Facebook or Path style slide navigation menu, complete with gestures.
+# ProMotion-menu [![Gem Version](https://badge.fury.io/rb/ProMotion-menu.png)](http://badge.fury.io/rb/ProMotion-menu) [![Build Status](https://travis-ci.org/clearsightstudio/ProMotion-menu.svg?branch=master)](https://travis-ci.org/clearsightstudio/ProMotion-menu) [![Code Climate](https://codeclimate.com/github/clearsightstudio/ProMotion-menu/badges/gpa.svg)](https://codeclimate.com/github/clearsightstudio/ProMotion-menu) [![Test Coverage](https://codeclimate.com/github/clearsightstudio/ProMotion-menu/badges/coverage.svg)](https://codeclimate.com/github/clearsightstudio/ProMotion-menu)
 
-![Travis CI](https://secure.travis-ci.org/macfanatic/promotion_slide_menu.png?branch=master)
+ProMotion-menu provides a menu component for the popular RubyMotion gem [ProMotion](https://github.com/clearsightstudio/ProMotion). Utilizing [MMDrawerController](https://github.com/mutualmobile/MMDrawerController) it allows you to easily have a cool Facebook or Path style slide navigation menu, complete with gestures.
+
+The gem was originally named `pro_motion_slide_menu` and authored by [Matt Brewer](https://github.com/macfanatic).
 
 ## Installation
 
@@ -10,7 +11,7 @@ This gem provides an easier way to integrate a great open source toolkit, [RubyM
 Add the following to your project's `Gemfile` to work with bundler.
 
 ```ruby
-gem "pro_motion_slide_menu"
+gem 'ProMotion-menu'
 ```
 
 Install with bundler:
@@ -26,52 +27,105 @@ This depends on motion-cocoapods and ProMotion.
 
 As of [motion-cocoapods](https://github.com/HipByte/motion-cocoapods/compare/1.3.6...1.3.7) v1.3.7, you no longer have to include a pods setup block in your project Rakefile, we can do that for you in the gem.
 
-## Creating and Configuring a Slide Menu
-To create a slide menu in your application, you need to start in your AppDelegate:
+## Creating and Configuring a Menu
+To create a menu in your application, you need to start in your AppDelegate:
 
 ```ruby
 class AppDelegate < PM::Delegate
 
   def on_load(app, options)
 
-    # Open the slide menu with your content view (initially shown) and navigation view(s) (initially hidden)
-    open_slide_menu MyGreatAppScreen.new(nav_bar: true), left: NavigationScreen
+    # Open the menu with your center view (initially shown) and navigation view(s) (initially hidden)
+    open_menu MyGreatAppScreen.new(nav_bar: true), left: NavigationScreen
 
-    # You can get to the instance of the slide menu at any time if you need to
-    slide_menu.controller(:left).class.name
+    # You can get to the instance of the menu at any time if you need to
+    self.menu.controller(:left).class.name
     # => NavigationScreen
-
-    # To easily change the gestures used to show or hide the drawers
-    slide_menu.gesture_type = :bezel
-    slide_menu.gesture_type
-    # => :bezel
-
-    # SlideMenuScreen is just an enhanced subclass of MMDrawerController, so you can do all sorts of things with it
-    slide_menu.statusBarViewBackgroundColor = UIColor.redColor
-    slide_menu.openDrawerGestureModeMask = MMOpenDrawerGestureModePanningNavigationBar
-    slide_menu.closeDrawerGestureModeMask = MMCloseDrawerGestureModePanningNavigationBar
 
   end
 
 end
 ```
 
-## Toggling the Slide Menu Current Screen
-To make the slide menu present the menu from anywhere in your app:
+### Alternate Approach
+If you prefer to keep your menu encapsulated you can create a menu drawer and do your setup there.
+
+```ruby
+class MenuDrawer < PM::Menu::Drawer
+
+  def setup
+    self.center = MyGreatAppScreen.new(nav_bar: true)
+    self.left = NavigationScreen
+    self.to_show = [:tap_nav_bar, :pan_nav_bar]
+  end
+
+end
+
+class AppDelegate < PM::Delegate
+
+  def on_load(app, options)
+    @menu = open MenuDrawer
+  end
+
+  def show_menu
+    @menu.show :left
+  end
+
+end
+```
+
+## Gesture Recognition
+By default you can show the menu by panning within 20 pts of the bezel and hide it by panning or tapping
+the center view. It's possible to override the default behavior:
+
+```ruby
+
+# In AppDelegate
+open_menu BodyScreen, right: MenuScreen, to_show: :pan_nav_bar, to_hide: [:pan_nav_bar, :tap_nav_bar]
+
+# From elsewhere in your app
+app_delegate.menu.to_show = :pan_center
+
+# The following gestures are provided:
+
+  # For to_show:
+  :pan_nav_bar  # Pan anywhere on the navigation bar
+  :pan_content  # Pan anywhere on the center view
+  :pan_center   # Alias of above
+  :pan_bezel    # Pan anywhere within 20 pts of the bezel
+  :all          # All of the above
+  :none         # No gesture recognition
+
+  # For to_hide:
+  :pan_nav_bar   # Pan anywhere on the navigation bar
+  :pan_content   # Pan anywhere on the center view
+  :pan_center    # Alias of above
+  :pan_bezel     # Pan anywhere within the bezel of the center view
+  :tap_nav_bar   # Tap the navigation bar
+  :tap_content   # Tap the center view
+  :tap_center    # Alias of above
+  :pan_menu      # Pan anywhere on the drawer view
+  :all           # All of the above
+  :none          # No gesture recognition
+
+```
+
+## Toggling the Menu Drawer Current Screen
+To make the menu drawer present the menu from anywhere in your app:
 
 ```ruby
 
 # Show the menu
-App.delegate.slide_menu.show(:left)
+app_delegate.menu.show(:left)
 
 # Equivalent to
-App.delegate.slide_menu.openDrawerSide MMDrawerSideLeft, animated: true, completion: ->(c) { true }
+app_delegate.menu.openDrawerSide MMDrawerSideLeft, animated: true, completion: ->(c) { true }
 
 # Hide the menu
-App.delegate.slide_menu.hide
+app_delegate.menu.hide
 
 # Equivalent to
-App.delegate.slide_menu.closeDrawerAnimated animated: true, completion: ->(c) { true }
+app_delegate.menu.closeDrawerAnimated animated: true, completion: ->(c) { true }
 
 ```
 
@@ -86,14 +140,14 @@ class NavigationScreen < ProMotion::TableScreen
       title: nil,
       cells: [{
         title: 'OVERWRITE THIS METHOD',
-        action: :swap_content_controller,
+        action: :swap_center_controller,
         arguments: HomeScreen
       }]
     }]
   end
 
-  def swap_content_controller(screen_class)
-    App.delegate.slide_menu.controller(content: screen_class)
+  def swap_center_controller(screen_class)
+    app_delegate.menu.center_controller = screen_class
   end
 
 end
@@ -101,4 +155,24 @@ end
 
 ## More Information
 
-Be sure to check out more documenation from the cocoapod itself, for fun things such as gesture support for showing or dismissing drawers, custom UIBarButtonItems and more.
+Be sure to check out more documenation from the [cocoapod itself](http://cocoadocs.org/docsets/MMDrawerController/0.5.6/), for fun things such as gesture support for showing or dismissing drawers, custom UIBarButtonItems and more.
+
+### Help
+
+ProMotion is not only an easy DSL to get started. The community is very helpful and
+welcoming to new RubyMotion developers. We don't mind newbie questions.
+
+If you need help, feel free to open an issue on GitHub. If we don't respond within a day, tweet us a link to the issue -- sometimes we get busy.
+
+### Contributing
+
+See [CONTRIBUTING.md](https://github.com/clearsightstudio/ProMotion/blob/master/CONTRIBUTING.md).
+
+### Primary Contributors
+
+* Matt Brewer: [@macfanatic](https://github.com/macfanatic)
+* Ryan Linton: [@ryanlntn](https://twitter.com/ryanlntn)
+* Jason Stirk: [@jstirk](https://github.com/jstirk)
+* Mark Rickert: [@markrickert](https://twitter.com/markrickert)
+* Jamon Holmgren: [@jamonholmgren](https://twitter.com/jamonholmgren)
+* [Many others](https://github.com/clearsightstudio/ProMotion-menu/graphs/contributors)
