@@ -4,3 +4,4 @@ pkg/
 /build/
 .repl_history
 vendor/Pods/
+Gemfile.lock
