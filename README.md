@@ -57,6 +57,7 @@ class MenuDrawer < PM::Menu::Drawer
     self.center = MyGreatAppScreen.new(nav_bar: true)
     self.left = NavigationScreen
     self.to_show = [:tap_nav_bar, :pan_nav_bar]
+    self.max_left_width = 250
   end
 
 end
@@ -132,7 +133,10 @@ app_delegate.menu.toggle(:left)
 app_delegate.menu.toggle_left
 
 # Equivalent to
-app_delegate.menu.toggleDrawerSide MMDrawerSideLeft, animated: true, completion: ->(c) { true } 
+app_delegate.menu.toggleDrawerSide MMDrawerSideLeft, animated: true, completion: ->(c) { true }
+
+# You can also adjust the Menu Drawer width
+app_delegate.menu.max_left_width = 250
 
 ```
 
