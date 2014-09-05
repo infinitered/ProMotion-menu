@@ -1,6 +1,9 @@
 # ProMotion-menu [![Gem Version](https://badge.fury.io/rb/ProMotion-menu.png)](http://badge.fury.io/rb/ProMotion-menu) [![Build Status](https://travis-ci.org/clearsightstudio/ProMotion-menu.svg?branch=master)](https://travis-ci.org/clearsightstudio/ProMotion-menu) [![Code Climate](https://codeclimate.com/github/clearsightstudio/ProMotion-menu/badges/gpa.svg)](https://codeclimate.com/github/clearsightstudio/ProMotion-menu) [![Test Coverage](https://codeclimate.com/github/clearsightstudio/ProMotion-menu/badges/coverage.svg)](https://codeclimate.com/github/clearsightstudio/ProMotion-menu)
 
-![sample app](https://camo.githubusercontent.com/171bc22d1f4ad13f7be22cf546c2644176066193/687474703a2f2f6d757475616c6d6f62696c652e6769746875622e696f2f4d4d447261776572436f6e74726f6c6c65722f4578616d706c65496d616765732f6578616d706c65312e706e67) ![sample app open](https://camo.githubusercontent.com/5c4050ef64d7b9836b6a56b89b458ed5c8fdfb7f/687474703a2f2f6d757475616c6d6f62696c652e6769746875622e696f2f4d4d447261776572436f6e74726f6c6c65722f4578616d706c65496d616765732f6578616d706c65322e706e67)
+<p align="center" >
+<img src="http://mutualmobile.github.io/MMDrawerController/ExampleImages/example1.png" width="266" height="500"/>
+<img src="http://mutualmobile.github.io/MMDrawerController/ExampleImages/example2.png" width="266" height="500"/>
+</p>
 
 ProMotion-menu provides a menu component for the popular RubyMotion gem [ProMotion](https://github.com/clearsightstudio/ProMotion). Utilizing [MMDrawerController](https://github.com/mutualmobile/MMDrawerController) it allows you to easily have a cool Facebook or Path style slide navigation menu, complete with gestures.
 
