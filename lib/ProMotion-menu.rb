@@ -6,11 +6,11 @@ require 'motion-cocoapods'
 require 'ProMotion'
 
 Motion::Project::App.setup do |app|
-  core_lib = File.join(File.dirname(__FILE__), 'ProMotion')
+  core_lib = File.join(File.dirname(__FILE__), 'ProMotion/menu')
   insert_point = app.files.find_index { |file| file =~ /^(?:\.\/)?app\// } || 0
 
-  Dir.glob(File.join(File.dirname(__FILE__), 'ProMotion/menu/**/*.rb')).each do |file|
-    app.files << file
+  Dir.glob(File.join(core_lib, '**/*.rb')).reverse.each do |file|
+    app.files.insert(insert_point, file)
   end
 
   app.pods do
