@@ -56,7 +56,7 @@ class MenuDrawer < PM::Menu::Drawer
   def setup
     self.center = MyGreatAppScreen.new(nav_bar: true)
     self.left = NavigationScreen
-    self.to_show = [:tap_nav_bar, :pan_nav_bar]
+    self.to_show = [:pan_bezel, :pan_nav_bar]
     self.max_left_width = 250
   end
 
