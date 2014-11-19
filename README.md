@@ -1,5 +1,10 @@
 # ProMotion-menu [![Gem Version](https://badge.fury.io/rb/ProMotion-menu.png)](http://badge.fury.io/rb/ProMotion-menu) [![Build Status](https://travis-ci.org/clearsightstudio/ProMotion-menu.svg?branch=master)](https://travis-ci.org/clearsightstudio/ProMotion-menu) [![Code Climate](https://codeclimate.com/github/clearsightstudio/ProMotion-menu/badges/gpa.svg)](https://codeclimate.com/github/clearsightstudio/ProMotion-menu) [![Test Coverage](https://codeclimate.com/github/clearsightstudio/ProMotion-menu/badges/coverage.svg)](https://codeclimate.com/github/clearsightstudio/ProMotion-menu)
 
+<p align="center" >
+<img src="http://mutualmobile.github.io/MMDrawerController/ExampleImages/example1.png" width="266" height="500"/>
+<img src="http://mutualmobile.github.io/MMDrawerController/ExampleImages/example2.png" width="266" height="500"/>
+</p>
+
 ProMotion-menu provides a menu component for the popular RubyMotion gem [ProMotion](https://github.com/clearsightstudio/ProMotion). Utilizing [MMDrawerController](https://github.com/mutualmobile/MMDrawerController) it allows you to easily have a cool Facebook or Path style slide navigation menu, complete with gestures.
 
 The gem was originally named `pro_motion_slide_menu` and authored by [Matt Brewer](https://github.com/macfanatic).
