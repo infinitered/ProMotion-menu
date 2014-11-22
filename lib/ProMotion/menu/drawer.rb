@@ -15,6 +15,7 @@ module ProMotion
         options[:to_show] ||= :pan_bezel
         options[:to_hide] ||= [:pan_center, :tap_center]
         options[:center] ||= center if center
+        shadow = options[:shadow] unless options[:shadow].nil?
         set_attributes self, options
         self.send(:setup) if self.respond_to?(:setup)
       end
@@ -65,6 +66,10 @@ module ProMotion
         return self.left_controller if side == :left
         return self.right_controller if side == :right
         self.center_controller if [:content, :center].include?(side)
+      end
+
+      def shadow=(show_shadow)
+        self.setShowsShadow(show_shadow)
       end
 
     protected
