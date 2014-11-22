@@ -1,8 +1,13 @@
 language: objective-c
 gemfile:
   - Gemfile
-before_script:
-- "bundle exec pod setup --silent"
-- "bundle exec rake pod:install -s"
-script: bundle exec rake spec
-bump: 2
+before_install:
+    - (ruby --version)
+    - sudo chown -R travis ~/Library/RubyMotion
+    - mkdir -p ~/Library/RubyMotion/build
+    - sudo motion update --cache-version=2.38
+script:
+    - bundle install
+    - bundle exec rake clean
+    - bundle exec rake pod:install
+    - bundle exec rake spec
