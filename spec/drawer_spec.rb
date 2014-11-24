@@ -49,4 +49,12 @@ describe ProMotion::Menu::Drawer do
     menu.center_controller.should == @content
   end
 
+  it "allows you to set whether or not the drawer has a shadow" do
+    menu = ProMotion::Menu::Drawer.new @content, left: @left, right: @right, shadow: false
+    menu.showsShadow.should == false
+
+    menu.shadow = true
+    menu.showsShadow.should == true
+  end
+
 end

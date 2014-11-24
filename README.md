@@ -63,6 +63,7 @@ class MenuDrawer < PM::Menu::Drawer
     self.left = NavigationScreen
     self.to_show = [:pan_bezel, :pan_nav_bar]
     self.max_left_width = 250
+    self.shadow = false
   end
 
 end
