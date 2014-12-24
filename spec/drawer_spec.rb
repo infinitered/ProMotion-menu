@@ -57,4 +57,12 @@ describe ProMotion::Menu::Drawer do
     menu.showsShadow.should == true
   end
 
+  it "doesn't crash if you set the left or right controller to nil" do
+    menu = ProMotion::Menu::Drawer.new(@content, left: nil, right: nil)
+
+    menu.left_controller.should == nil
+    menu.right_controller.should == nil
+    menu.center_controller.should == @content
+  end
+
 end
