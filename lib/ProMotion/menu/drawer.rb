@@ -75,9 +75,11 @@ module ProMotion
     protected
 
       def prepare_controller_for_pm(controller)
-        controller = set_up_screen_for_open(controller, {})
-        ensure_wrapper_controller_in_place(controller, {})
-        controller.navigationController || controller
+        unless controller.nil?
+          controller = set_up_screen_for_open(controller, {})
+          ensure_wrapper_controller_in_place(controller, {})
+          controller.navigationController || controller
+        end
       end
 
       def default_completion_block
