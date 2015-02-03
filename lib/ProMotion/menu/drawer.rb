@@ -4,6 +4,7 @@ module ProMotion
       include ::ProMotion::ScreenModule
       include Gestures
       include Visibility
+      include Transition
 
       def self.new(center=nil, options={})
         menu = alloc.init
