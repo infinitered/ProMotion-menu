@@ -26,7 +26,7 @@ module ProMotion; module Menu
           visual_state = MMDrawerVisualState.parallaxVisualStateBlockWithParallaxFactor(parallax_factor)
         end
       end
-      visual_state ||= VISUAL_STATES.keys.include?(visual_block) ? VISUAL_STATES[visual_block] : nil
+      visual_state ||= VISUAL_STATES[visual_block]
       visual_state
     end
 
