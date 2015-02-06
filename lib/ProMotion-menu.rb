@@ -13,6 +13,12 @@ Motion::Project::App.setup do |app|
     app.files.insert(insert_point, file)
   end
 
+  # For compatibility with libraries that set detect_dependencies to false
+  app.files_dependencies({
+    "#{core_lib}/drawer.rb" => [ "#{core_lib}/visibility.rb", "#{core_lib}/gestures.rb" ],
+    "#{core_lib}/delegate.rb" => [ "#{core_lib}/drawer.rb" ],
+  })
+  
   app.pods do
     pod 'MMDrawerController', '~> 0.5'
   end
