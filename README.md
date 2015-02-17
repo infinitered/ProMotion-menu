@@ -62,6 +62,7 @@ class MenuDrawer < PM::Menu::Drawer
     self.center = MyGreatAppScreen.new(nav_bar: true)
     self.left = NavigationScreen
     self.to_show = [:pan_bezel, :pan_nav_bar]
+    self.transition_animation = :swinging_door
     self.max_left_width = 250
     self.shadow = false
   end
@@ -115,6 +116,29 @@ app_delegate.menu.to_show = :pan_center
   :all           # All of the above
   :none          # No gesture recognition
 
+```
+
+## Transition Animation
+Changing the transition animation is easy:
+
+```ruby
+app_delegate.menu.transition_animation = :swinging_door
+
+# The following transition animation options are available:
+
+  :slide              # Default. Equivalent to :parallax_1 and similar to the menu
+                      # in Spotify's app.
+
+  :slide_and_scale    # A slide and scale visual effect similar to Mailbox.app.
+                      # Scales from 90% to 100%, translates x 50px, and sets alpha
+                      # from 0.0 to 1.0.
+
+  :swinging_door      # A swinging door effect
+
+  :parallax_n                   # A parallax effect where n is a parallax factor.
+  :parallax                     # Equiavlent of :parallax_3
+  :parallax_1                   # Equivalent of :slide
+  :"parallax_#{Float::MAX}"     # Equivalent of no animation at all.
 ```
 
 ## Toggling the Menu Drawer Current Screen
