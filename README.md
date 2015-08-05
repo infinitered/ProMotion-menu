@@ -25,6 +25,18 @@ Install with bundler:
 bundle install
 ```
 
+Install pods:
+
+```ruby
+rake pod:install
+```
+
+If you're encountering errors, try cleaning before installing pods:
+
+```ruby
+rake clean:all
+```
+
 ### Dependenices
 This depends on motion-cocoapods and ProMotion.
 
@@ -203,7 +215,9 @@ Be sure to check out more documenation from the [cocoapod itself](http://cocoado
 ProMotion is not only an easy DSL to get started. The community is very helpful and
 welcoming to new RubyMotion developers. We don't mind newbie questions.
 
-If you need help, feel free to open an issue on GitHub. If we don't respond within a day, tweet us a link to the issue -- sometimes we get busy.
+If you need help, feel free to open an issue on GitHub. If we don't respond within a day, tweet us a link to the issue -- sometimes we get busy. 
+
+A [very minimal ProMotion-menu sample](https://github.com/ryanlntn/pm-menu-issue-44) is available for reference.
 
 ### Contributing
 
