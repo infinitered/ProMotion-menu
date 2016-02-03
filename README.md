@@ -8,7 +8,7 @@
 
 ProMotion-menu provides a menu component for the popular RubyMotion gem [ProMotion](https://github.com/clearsightstudio/ProMotion). Utilizing [MMDrawerController](https://github.com/mutualmobile/MMDrawerController) it allows you to easily have a cool Facebook or Path style slide navigation menu, complete with gestures.
 
-The gem was originally named `pro_motion_slide_menu` authored by [Matt Brewer](https://github.com/macfanatic) and is now maintained by ![Infinite Red](http://infinite.red), a web and mobile development company based in Portland, OR and San Francisco, CA.
+The gem was originally named `pro_motion_slide_menu` authored by [Matt Brewer](https://github.com/macfanatic) and is now maintained by [Infinite Red](http://infinite.red), a web and mobile development company based in Portland, OR and San Francisco, CA.
 
 ## Installation
 
