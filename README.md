@@ -1,4 +1,4 @@
-# ProMotion-menu 
+# ProMotion-menu
 [![Gem Version](https://badge.fury.io/rb/ProMotion-menu.png)](http://badge.fury.io/rb/ProMotion-menu) [![Build Status](https://travis-ci.org/clearsightstudio/ProMotion-menu.svg?branch=master)](https://travis-ci.org/clearsightstudio/ProMotion-menu) [![Code Climate](https://codeclimate.com/github/clearsightstudio/ProMotion-menu/badges/gpa.svg)](https://codeclimate.com/github/clearsightstudio/ProMotion-menu) [![Test Coverage](https://codeclimate.com/github/clearsightstudio/ProMotion-menu/badges/coverage.svg)](https://codeclimate.com/github/clearsightstudio/ProMotion-menu)
 
 <p align="center" >
@@ -233,3 +233,7 @@ See [CONTRIBUTING.md](https://github.com/clearsightstudio/ProMotion/blob/master/
 * Mark Rickert: [@markrickert](https://twitter.com/markrickert)
 * Jamon Holmgren: [@jamonholmgren](https://twitter.com/jamonholmgren)
 * [Many others](https://github.com/clearsightstudio/ProMotion-menu/graphs/contributors)
+
+## Premium Support
+
+[ProMotion](https://github.com/infinitered/ProMotion) and [ProMotion-menu](https://github.com/infinitered/ProMotion-menu), as open source projects, are free to use and always will be. [Infinite Red](https://infinite.red/) offers premium ProMotion and ProMotion-menu support and general mobile app design/development services. Email us at [hello@infinite.red](mailto:hello@infinite.red) to get in touch with us for more details.
