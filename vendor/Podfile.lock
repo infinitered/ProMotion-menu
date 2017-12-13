@@ -1,21 +1,23 @@
 PODS:
-  - MMDrawerController (0.5.7):
-    - MMDrawerController/Core (= 0.5.7)
-    - MMDrawerController/MMDrawerBarButtonItem (= 0.5.7)
-    - MMDrawerController/MMDrawerVisualStates (= 0.5.7)
-    - MMDrawerController/Subclass (= 0.5.7)
-  - MMDrawerController/Core (0.5.7)
-  - MMDrawerController/MMDrawerBarButtonItem (0.5.7):
+  - MMDrawerController (0.6.0):
+    - MMDrawerController/Core (= 0.6.0)
+    - MMDrawerController/MMDrawerBarButtonItem (= 0.6.0)
+    - MMDrawerController/MMDrawerVisualStates (= 0.6.0)
+    - MMDrawerController/Subclass (= 0.6.0)
+  - MMDrawerController/Core (0.6.0)
+  - MMDrawerController/MMDrawerBarButtonItem (0.6.0):
     - MMDrawerController/Core
-  - MMDrawerController/MMDrawerVisualStates (0.5.7):
+  - MMDrawerController/MMDrawerVisualStates (0.6.0):
     - MMDrawerController/Core
-  - MMDrawerController/Subclass (0.5.7):
+  - MMDrawerController/Subclass (0.6.0):
     - MMDrawerController/Core
 
 DEPENDENCIES:
-  - MMDrawerController (~> 0.5)
+  - MMDrawerController (~> 0.6)
 
 SPEC CHECKSUMS:
-  MMDrawerController: c3ab7a318ddc7e2bcd133139c3161af08c6e1197
+  MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
 
-COCOAPODS: 0.35.0
+PODFILE CHECKSUM: d96d30cf3741ce4b667608a40497114bf815574e
+
+COCOAPODS: 1.2.1

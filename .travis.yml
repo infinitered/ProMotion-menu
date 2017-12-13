@@ -1,13 +1,19 @@
 language: objective-c
+cache:
+  bundler: true
+  cocoapods: true
+  directories: []
+branches:
+  only:
+    - master
+    - devel
 before_install:
+  - motion update --check || sudo motion update; true
+  - (motion --version)
   - (ruby --version)
-  - sudo chown -R travis ~/Library/RubyMotion
-  - mkdir -p ~/Library/RubyMotion/build
-  - sudo motion update
-  - bundle install
-  - pod setup
+script:
   - bundle exec rake pod:install
-script: bundle exec rake spec
+  - bundle exec rake clean spec
 env:
   global:
   - COCOAPODS_NO_REPO_UPDATE_OUTPUT=true

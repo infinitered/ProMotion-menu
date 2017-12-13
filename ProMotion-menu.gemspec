@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.add_dependency "motion-cocoapods", "~> 1"
   s.add_dependency "ProMotion", "~> 2"
 
-  s.add_development_dependency "rake", "~> 10"
+  s.add_development_dependency "rake"
   s.add_development_dependency "motion-stump", "~> 0.3"
 
 end

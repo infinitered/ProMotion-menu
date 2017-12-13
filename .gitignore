@@ -4,4 +4,5 @@ pkg/
 /build/
 .repl_history
 vendor/Pods/
+vendor/build/
 Gemfile.lock
