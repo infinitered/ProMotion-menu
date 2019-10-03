@@ -18,7 +18,7 @@ module ProMotion
       alias_method :has_slide_menu?, :has_menu?
 
       def open_menu(content, options={})
-        self.menu = ProMotion::Menu::Drawer.new(content, options)
+        self.menu = ProMotion::Menu::Drawer.new(options.merge(center: content))
         open_root_screen menu
         menu
       end

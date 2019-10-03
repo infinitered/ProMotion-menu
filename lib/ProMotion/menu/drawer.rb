@@ -6,9 +6,9 @@ module ProMotion
       include Visibility
       include Transition
 
-      def self.new(center=nil, options={})
+      def self.new(options={})
         menu = alloc.init
-        menu.send(:auto_setup, center, options)
+        menu.send(:auto_setup, options)
         menu
       end
 
@@ -18,10 +18,9 @@ module ProMotion
         end
       end
 
-      def auto_setup(center, options={})
+      def auto_setup(options={})
         options[:to_show] ||= :pan_bezel
         options[:to_hide] ||= [:pan_center, :tap_center]
-        options[:center] ||= center if center
         shadow = options[:shadow] unless options[:shadow].nil?
         set_attributes self, options
         self.send(:setup) if self.respond_to?(:setup)
