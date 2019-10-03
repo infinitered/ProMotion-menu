@@ -12,6 +12,12 @@ module ProMotion
         menu
       end
 
+      def init
+        super.tap do
+          screen_init if respond_to?(:screen_init)
+        end
+      end
+
       def auto_setup(center, options={})
         options[:to_show] ||= :pan_bezel
         options[:to_hide] ||= [:pan_center, :tap_center]
