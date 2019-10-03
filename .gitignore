@@ -1,7 +1,7 @@
 pkg/
 *.gem
 .DS_Store
-/build/
+build
 .repl_history
 vendor/Pods/
 Gemfile.lock
