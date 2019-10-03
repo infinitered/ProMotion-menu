@@ -38,7 +38,7 @@ describe ProMotion::Menu::Drawer do
 
   it "accepts a plain UIViewController" do
     menu = ProMotion::Menu::Drawer.new @content, left: @left
-    should.not.raise(NoMethodError) { menu.left_controller = UIViewController }
+    should.not.raise(NoMethodError) { menu.left_controller = UIViewController.new }
     menu.left_controller.should.be.instance_of UIViewController
   end
 
