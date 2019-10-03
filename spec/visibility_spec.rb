@@ -9,13 +9,13 @@ describe ProMotion::Menu::Visibility do
 
   describe "#show" do
     it "presents the menu controller when requested" do
-      menu = ProMotion::Menu::Drawer.new @content, left: @left
+      menu = ProMotion::Menu::Drawer.new center: @content, left: @left
       menu.show(:left)
       wait(0.5) { menu.openSide.should == MMDrawerSideLeft }
     end
 
     it "presents the menu controller without animation when requested" do
-      menu = ProMotion::Menu::Drawer.new @content, left: @left
+      menu = ProMotion::Menu::Drawer.new center: @content, left: @left
       menu.show(:left, false)
       wait(0.1) { menu.openSide.should == MMDrawerSideLeft }
     end
@@ -23,7 +23,7 @@ describe ProMotion::Menu::Visibility do
 
   describe "#hide" do
     it "presents the content controller when requested" do
-      menu = ProMotion::Menu::Drawer.new @content, left: @left
+      menu = ProMotion::Menu::Drawer.new center: @content, left: @left
       menu.hide
       wait(0.5) { menu.openSide.should == MMDrawerSideNone }
     end
@@ -31,7 +31,7 @@ describe ProMotion::Menu::Visibility do
 
   describe "#toggle" do
     before do
-      @menu = ProMotion::Menu::Drawer.new @content, left: @left, right: @right
+      @menu = ProMotion::Menu::Drawer.new center: @content, left: @left, right: @right
     end
 
     describe "from left" do
@@ -81,7 +81,7 @@ describe ProMotion::Menu::Visibility do
 
   describe "#max_left_width" do
     before do
-      @menu = ProMotion::Menu::Drawer.new @content, left: @left, right: @right
+      @menu = ProMotion::Menu::Drawer.new center: @content, left: @left, right: @right
     end
 
     it "returns the maximum width for a given drawer" do
@@ -91,7 +91,7 @@ describe ProMotion::Menu::Visibility do
 
   describe "#max_left_width=" do
     before do
-      @menu = ProMotion::Menu::Drawer.new @content, left: @left, right: @right
+      @menu = ProMotion::Menu::Drawer.new center: @content, left: @left, right: @right
     end
 
     it "sets a maximum drawer width" do
