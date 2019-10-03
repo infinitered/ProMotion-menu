@@ -77,6 +77,7 @@ module ProMotion
 
       def prepare_controller_for_pm(controller)
         unless controller.nil?
+          controller = controller.new if controller.respond_to?(:new)
           controller = set_up_screen_for_open(controller, {})
           ensure_wrapper_controller_in_place(controller, {})
           controller.navigationController || controller
