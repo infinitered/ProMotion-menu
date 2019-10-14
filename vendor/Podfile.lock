@@ -15,7 +15,13 @@ PODS:
 DEPENDENCIES:
   - MMDrawerController (~> 0.5)
 
-SPEC CHECKSUMS:
-  MMDrawerController: c3ab7a318ddc7e2bcd133139c3161af08c6e1197
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - MMDrawerController
 
-COCOAPODS: 0.35.0
+SPEC CHECKSUMS:
+  MMDrawerController: 7a4cf8e25596bf2434e03ce50d22a8608ddee6a1
+
+PODFILE CHECKSUM: fa69cc9bce4120c0fc876d7ba807a59591c24ec1
+
+COCOAPODS: 1.6.2

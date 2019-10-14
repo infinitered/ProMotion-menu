@@ -3,8 +3,7 @@ $:.unshift("/Library/RubyMotion/lib")
 $:.unshift("~/.rubymotion/rubymotion-templates")
 
 require 'motion/project/template/ios'
-
-require "bundler/gem_tasks"
+require 'motion/project/template/gem/gem_tasks'
 
 begin
   require 'bundler'
