@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
 
 gem "rake"
-gem "ProMotion", "~> 2.4.2"
+gem "ProMotion", "~> 2.8.0"
 gem "ProMotion-menu"
